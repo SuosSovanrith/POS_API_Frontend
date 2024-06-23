@@ -413,73 +413,38 @@ $('#Product_Search').keypress(function () {
             });
         }
      });
+});
 
     
-    // for add order
-    $(".BtnSubmitOrder").click(function() {
-        if( $('input[name="Payment"]:checked').val() == 0){
-            Swal.fire({
-                title: "Enter Recieved Amount",
-                html:
-                    '<b>Amounts($):</b> <input id="swal-input1" class="swal2-input" min="0" step="0.01" value="' + ($('#TotalAmount').val() * (1-($('#Discount').val()/100))) + '"  />',
-                showCancelButton: true,
-                confirmButtonText: "Submit",
-                showLoaderOnConfirm: true,
-                preConfirm: () => {
-                    var customer_id = $('#Customer_Id').val();
-                    var amount = $('#swal-input1').val();
-                    var discount = $('#Discount').val();
-                    var payment_method = $('input[name="Payment"]:checked').val();
+// for add order
+$(".BtnSubmitOrder").click(function() {
+    Swal.fire({
+        title: "Enter Recieved Amount",
+        html:
+            '<b>Amounts($):</b> <input id="swal-input1" class="swal2-input" min="0" step="0.01" value="' + ($('#TotalAmount').val() * (1-($('#Discount').val()/100))).toFixed(2) + '"  />',
+        showCancelButton: true,
+        confirmButtonText: "Submit",
+        showLoaderOnConfirm: true,
+        preConfirm: () => {
+            var customer_id = $('#Customer_Id').val();
+            var amount = $('#swal-input1').val();
+            var discount = $('#Discount').val();
+            var payment_method = 0;
 
-                    $.post('/addorder', {
-                        customer_id: customer_id,
-                        amount: amount,
-                        discount: discount,
-                        payment_method: payment_method
+            $.post('/addorder', {
+                customer_id: customer_id,
+                amount: amount,
+                discount: discount,
+                payment_method: payment_method
 
-                    }, function(data) {
-                        window.location.href = "/admin/order";
-                    });
-                },
-                allowOutsideClick: () => !Swal.isLoading()
-                }).then((result) => {
-                if (result.isConfirmed) {
-                }
-                });
-        }else{
-            Swal.fire({
-                title: "Enter Recieved Amount and KHQR",
-                html:
-                    '<b>Amounts($):</b> <input type="number" id="swal-input1" class="swal2-input" min="0" step="0.01" value="' + ($('#TotalAmount').val() * (1-($('#Discount').val()/100))) + '"  required/> <br/>' +
-                    '<img src="http://127.0.0.1:8000/assets/images/payment/abaQr.jpg" width="180"> <br/>' +
-                    '<b>KHQR:</b> <input type="file" id="swal-input2" class="swal2-file" accept="image/*" required>',
-                showCancelButton: true,
-                confirmButtonText: "Submit",
-                showLoaderOnConfirm: true,
-                preConfirm: () => {
-                    var customer_id = $('#Customer_Id').val();
-                    var amount = $('#swal-input1').val();
-                    var discount = $('#Discount').val();
-                    var payment_method = $('input[name="Payment"]:checked').val();
-                    var khqr = $('#swal-input2').val().split('\\').pop();;
-
-                    $.post('/addorder', {
-                        customer_id: customer_id,
-                        amount: amount,
-                        discount: discount,
-                        payment_method: payment_method,
-                        khqr: khqr
-
-                    }, function(data) {
-                        window.location.href = "/admin/order";
-                    });
-                },
-                allowOutsideClick: () => !Swal.isLoading()
-                }).then((result) => {
-                if (result.isConfirmed) {
-                }
-                });
-        }
+            }, function(data) {
+                window.location.href = "/admin/order";
+            });
+        },
+        allowOutsideClick: () => !Swal.isLoading()
+    }).then((result) => {
+        if (result.isConfirmed) {
+            }
     });
-        
 });
+        
