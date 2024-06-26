@@ -131,10 +131,13 @@
                         </div> -->
 
                         <div class="row">
-                            <div class="col">
+                            <div class="col-4">
                                 <button class="main-btn danger-btn btn-hover BtnClearCart" style="height: 40px;">Clear</button>
                             </div>
-                            <div class="col" align="right">
+                            <div class="col-4" align="center">
+                                <button href="#0" class="main-btn success-btn btn-hover BtnPrintReceipt" style="height: 40px;"><i class="lni lni-printer"></i></button>
+                            </div>
+                            <div class="col-4" align="right">
                                 <button href="#0" class="main-btn primary-btn btn-hover BtnSubmitOrder" style="height: 40px;">Submit</button>
                             </div>
                         </div>
@@ -189,6 +192,27 @@
                 </div>
             </div>
         <!-- End right side -->
+
+        <!-- Modal Receipt-->
+        <div class="modal fade" id="FormModalReceipt" tabindex="-1" aria-labelledby="FormModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="col-12">
+                        <div class="row">
+                                <div class="col-lg-12"  id="PrintReceipt">
+                                    <!-- Receipt Content -->
+                                </div><!-- end col -->
+                            <div class="d-print-none p-3">
+                                <div class="float-end">
+                                    <a href="#" class="btn btn-success" id="Print" onclick="printReceipt()"><i class="lni lni-printer"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Receipt -->
 
         </div> 
     <!-- End Content -->

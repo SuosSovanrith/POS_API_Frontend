@@ -33,7 +33,9 @@ $("#SignIn").click(function() {
                 position_name:objectData.position_name,
                 user_id:objectData.user_id  
             }, function(data) {
-                window.location.href = "../views/index.php";
+                if(data == "Success"){
+                    window.location.replace('../views/index.php');
+                }
             });
         }
      });

@@ -13,6 +13,7 @@ if(isset($_POST['message']) && isset($_POST['name']) && isset($_POST['email']) &
     $_SESSION['position_name'] = $_POST['position_name'];
     $_SESSION['user_id'] = $_POST['user_id'];
 
+    echo('Success');
 }
 
 ?>
