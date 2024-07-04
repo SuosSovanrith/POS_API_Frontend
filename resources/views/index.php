@@ -25,11 +25,14 @@
                 <div class="card-style shadow">
                         <div class="row">
                         <!-- Barcode -->
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <input type="text" class="form-control" name="ScanBarcode" id="ScanBarcode" placeholder="Scan Barcode...">
                             </div>
+                            <div class="col-md-2 p-0">
+                                <button id="BtnBarcodeScanner" class="main-btn primary-btn-outline btn-sm text-primary"><i class="fa fa-qrcode"></i></button>
+                            </div>
                         <!-- Customer -->
-                            <div class="col-md-6">
+                            <div class="col-md-6 p-0">
                                 <div class="select-style-1">
                                     <div class="select-position select-sm">
                                         <select name="Customer_Id" id="Customer_Id">
@@ -112,23 +115,6 @@
                                 <h4 class="text-danger" align="right" id="Total_Discount"><!--${{number_format($total, 2, '.', ',')}}--></h4>
                             </div>
                         </div>
-                            
-                            <!-- Payment Method
-                        <div class="row mb-4">
-                            <div class="col">
-                                <b>Payment </b>
-                            </div>
-                            <div class="col">
-                                <input class="form-check-input border border-secondary" type="radio" value="0" name="Payment" id="Payment" checked>
-                                <label class="form-check-label" for="Payment">
-                                     Cash</label>
-                            </div>
-                            <div class="col">
-                                <input class="form-check-input border border-secondary" type="radio" value="1" name="Payment" id="Payment">
-                                <label class="form-check-label" for="Payment">
-                                     KHQR</i></label>
-                            </div>
-                        </div> -->
 
                         <div class="row">
                             <div class="col-4">
@@ -213,6 +199,23 @@
             </div>
         </div>
         <!-- End Receipt -->
+
+        <!-- Modal barcode scanner-->
+        <div class="modal fade" id="FormModalBarcode" tabindex="-1" aria-labelledby="FormModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="FormModalLabel">Scan Barcode</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="col-12">
+                        <div id="my-qr-reader"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End barcode scanner -->
+
 
         </div> 
     <!-- End Content -->

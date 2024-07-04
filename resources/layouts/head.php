@@ -12,8 +12,11 @@
     <link rel="stylesheet" href="../../public/assets/css/lineicons.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="../../public/assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="../../public/assets/css/main.css" />
+    <link rel="stylesheet" href="../../public/assets/font-awesome/4.5.0/css/font-awesome.min.css" />
+
     
     <!-- ========== JQuery ========= -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
     <?php session_start(); ?>
   </head>

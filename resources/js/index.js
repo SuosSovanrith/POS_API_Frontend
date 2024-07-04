@@ -579,7 +579,6 @@ $(".BtnSubmitOrder").click(function() {
             a.document.write('<head> <link rel="stylesheet" href="../../public/assets/css/bootstrap.min.css"> </head>'); 
             a.document.write('<body >'); 
             a.document.write(data); 
-            // a.document.write('<div class="d-print-none p-3"><div class="float-end"><a href="#" class="btn btn-success" id="Print" onclick="window.print()">Print</a></div></div>'); 
             a.document.write('</body></html>'); 
             a.document.title = 'Print Receipt'; 
             a.focus(); 
@@ -590,3 +589,41 @@ $(".BtnSubmitOrder").click(function() {
                 a.print(); 
             }, 1200);
         }
+
+
+// QrCode scanner
+
+$("#BtnBarcodeScanner").click(function() {
+
+    $("#FormModalBarcode").modal("show");
+
+    var continueScanning = true;  // Flag to control scanning
+
+    var e = jQuery.Event("keypress");
+    e.which = 13;
+    e.keyCode = 13;
+
+        // If found you qr code
+        function onScanSuccess(decodeText, decodedResult) {
+
+            if (!continueScanning) return;  // Check flag before processing
+
+            $("#FormModalBarcode").modal("hide");
+            $('#ScanBarcode').val(decodeText);
+            $('#ScanBarcode').trigger(e);
+            $('#ScanBarcode').val("");
+
+            htmlscanner.clear();
+
+            continueScanning = false;  // Set flag to false to stop further scans   
+        }
+     
+        let htmlscanner = new Html5QrcodeScanner(
+            "my-qr-reader",
+            { fps: 10, qrbos: 250 }
+        );
+
+        htmlscanner.render(onScanSuccess);
+
+});
+

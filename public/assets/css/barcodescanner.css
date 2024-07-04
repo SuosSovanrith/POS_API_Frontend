@@ -1,0 +1,14 @@
+#my-qr-reader {
+    padding: 20px !important;
+    border: 1.5px solid #b2b2b2 !important;
+    border-radius: 8px;
+}
+ 
+#my-qr-reader img[alt="Info icon"] {
+    display: none;
+}
+ 
+#my-qr-reader img[alt="Camera based scan"] {
+    width: 100px !important;
+    height: 100px !important;
+}
